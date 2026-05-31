@@ -6,11 +6,11 @@ import sys
 import subprocess
 import webbrowser
 
-config_dir = Path.home() / ".projlauncher" # The proj launcher folder
-config_file = config_dir / "projects.json" # the projects json file
+config_dir = Path.home() / ".projlauncher"  # The proj launcher folder
+config_file = config_dir / "projects.json"  # the projects json file
 
 
-def get_config(): # get the config file (projects.json)
+def get_config():  # get the config file (projects.json)
 
     config_dir.mkdir(exist_ok=True)
 
@@ -22,12 +22,12 @@ def get_config(): # get the config file (projects.json)
         return json.load(f)
 
 
-def save_config(config): # save changes in config file
+def save_config(config):  # save changes in config file
     with open(config_file, "w") as f:
         json.dump(config, f, indent=4)
 
 
-def add_project(): # function that adds a project to the file
+def add_project():  # function that adds a project to the file
     config = get_config()
     name = input("Project name > ")
 
@@ -37,12 +37,14 @@ def add_project(): # function that adds a project to the file
 
     path = input("Project Path > ")
 
-    commands_input = input("Would you like to run any commands upon opening project? seperate the commands with commas and no spaces between commands. > ")
+    commands_input = input(
+        "Would you like to run any commands upon opening project? seperate the commands with commas and no spaces between commands. > ")
 
     commands = commands_input.split(",")
     print(commands)
 
-    urls_input = input("Would you like to open any URLs upon opening this project? Please seperate them with commas and no spaces between URLs. > ")
+    urls_input = input(
+        "Would you like to open any URLs upon opening this project? Please seperate them with commas and no spaces between URLs. > ")
 
     urls = urls_input.split(",")
     print(urls)
@@ -56,7 +58,7 @@ def add_project(): # function that adds a project to the file
     save_config(config)
 
 
-def launch_project(project_name): # function that launches the project
+def launch_project(project_name):  # function that launches the project
     config = get_config()
 
     project = config["projects"].get(project_name)
@@ -64,9 +66,10 @@ def launch_project(project_name): # function that launches the project
     if project is None:
         print("Provided project does not exist.")
         return
-    
+
     subprocess.Popen([
-        "code", # Replace this with your code editor of choice's command, if it does not have one, you may need to run an open command.
+        # Replace this with your code editor of choice's command, if it does not have one, you may need to run an open command.
+        "code",
         project["path"]
     ])
 
@@ -79,8 +82,6 @@ def launch_project(project_name): # function that launches the project
 
     for url in project["urls"]:
         webbrowser.open_new_tab(url)
-    
-
 
 
 if __name__ == "__main__":
