@@ -12,6 +12,8 @@ To install, run the provided install script, (in the scripts folder) and then yo
 
 This is the line you need to add: ```export PATH="$HOME/scripts:$PATH"```. this allows the terminal to get our command from the scripts folder. Don't worry if you do not have a scripts folder, the install script creates one.
 
+*Important:* to run the install script, I recommend: In your terminal move to the directory where the scripts folder is. Then, run ```bash scripts/install.sh```.
+
 ### How to add your project
 
 To add a project, once you've installed the software, run ```proj add```.
