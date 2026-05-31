@@ -83,6 +83,19 @@ def launch_project(project_name):  # function that launches the project
     for url in project["urls"]:
         webbrowser.open_new_tab(url)
 
+def remove_project(project_name):
+    config = get_config()
+
+    project = config["projects"].get(project_name)
+    if project is None:
+        print("Provided project does not exist.")
+        return
+    
+    del config["projects"][project_name]
+
+    save_config(config)
+    print(f"Removed: {project_name}.")
+
 
 if __name__ == "__main__":
     args = sys.argv
@@ -94,4 +107,10 @@ if __name__ == "__main__":
             launch_project(sys.argv[2])
         else:
             print("No project argument provided")
-            print("command: ProjLaunch launch yourprojectname")
+            print("command: proj launch yourprojectname")
+    elif sys.argv[1] == "remove":
+        if len(sys.argv) > 2:
+            remove_project(sys.argv[2])
+        else:
+            print("No project argument provided")
+            print("command: proj remove yourprojectname")
