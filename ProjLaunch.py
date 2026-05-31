@@ -1,14 +1,16 @@
+#!/usr/bin/env python3
+
 from pathlib import Path
 import json
 import sys
 import subprocess
 import webbrowser
 
-config_dir = Path.home() / ".projlauncher"
-config_file = config_dir / "projects.json"
+config_dir = Path.home() / ".projlauncher" # The proj launcher folder
+config_file = config_dir / "projects.json" # the projects json file
 
 
-def get_config():
+def get_config(): # get the config file (projects.json)
 
     config_dir.mkdir(exist_ok=True)
 
@@ -20,12 +22,12 @@ def get_config():
         return json.load(f)
 
 
-def save_config(config):
+def save_config(config): # save changes in config file
     with open(config_file, "w") as f:
         json.dump(config, f, indent=4)
 
 
-def add_project():
+def add_project(): # function that adds a project to the file
     config = get_config()
     name = input("Project name > ")
 
@@ -54,7 +56,7 @@ def add_project():
     save_config(config)
 
 
-def launch_project(project_name):
+def launch_project(project_name): # function that launches the project
     config = get_config()
 
     project = config["projects"].get(project_name)
@@ -64,7 +66,7 @@ def launch_project(project_name):
         return
     
     subprocess.Popen([
-        "code",
+        "code", # Replace this with your code editor of choice's command, if it does not have one, you may need to run an open command.
         project["path"]
     ])
 
