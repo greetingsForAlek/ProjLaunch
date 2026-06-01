@@ -25,6 +25,14 @@ Now, This project works with VSCode, so it will open vscode if you have that ins
 
 With that out of the way, run ```proj launch your_project_name``` to launch the project. Make sure to replace ```your_project_name``` with the actual name of your project.
 
+If you want to use VSCode and do not have the ```code``` command, you can run ```shift + command + P``` and run ```Shell Command: Install 'code' command in PATH```.
+
+### Delete Project
+
+To delete your project (or to just remove it from projLaunch), you can just run ```proj remove your_project_name```. Same again, replace your_project_name with your actual project's name.
+
+Note: This will not actually delete your project folder, it will jut remove it from the json file, therefore you will no longer be able to launch it with ```proj launch```.
+
 ## Ongoing issues
 
 There are currently no issues that i am aware of.
