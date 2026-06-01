@@ -33,6 +33,16 @@ To delete your project (or to just remove it from projLaunch), you can just run 
 
 Note: This will not actually delete your project folder, it will jut remove it from the json file, therefore you will no longer be able to launch it with ```proj launch```.
 
+### Releases
+
+There are two types of releases, Full Releases and Part Releases.
+
+If you want to download the software for modifications, i'd recommend git cloning the project, but if you're downloading for use, i'd recommend downloading the lastest full release.
+
+Part releases could be shipped with bugs, because they are only Part realeases, so i would be careful downloading them.
+
+Here is a link to the latest full release: https://github.com/greetingsForAlek/ProjLaunch/releases/tag/Full_Release
+
 ## Ongoing issues
 
 There are currently no issues that i am aware of.
